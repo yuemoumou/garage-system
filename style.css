@@ -1,0 +1,119 @@
+/* body{
+    margin:0;
+    padding:0;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#f2f2f2;
+
+    font-family:Arial;
+}
+
+.login-box{
+    width:300px;
+    padding:30px;
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+    display:flex;
+    flex-direction:column;
+}
+
+.login-box h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.login-box input{
+    margin-bottom:15px;
+    padding:10px;
+    font-size:16px;
+}
+
+.login-box button{
+    padding:10px;
+
+    border:none;
+
+    background:#409eff;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    border-radius:5px;
+}
+
+.login-box button:hover{
+    background:#66b1ff;
+}
+
+#msg{
+    text-align:center;
+    color:red;
+    margin-top:10px;
+} */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* 左侧菜单 */
+.sidebar{
+    width:220px;
+    background:#304156;
+    color:white;
+    padding:20px;
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:15px;
+    margin-bottom:10px;
+    background:#3c4b64;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.sidebar li:hover{
+    background:#409eff;
+}
+
+/* 右侧内容 */
+.main{
+    flex:1;
+    padding:30px;
+    background:#f5f7fa;
+}
+
+.main h1{
+    margin-bottom:20px;
+}
