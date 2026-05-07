@@ -1,25 +1,58 @@
-const loginBtn = document.getElementById("loginBtn");
-
-loginBtn.onclick = function () {
-
-    const username = document.getElementById("username").value;
-
-    const password = document.getElementById("password").value;
-
-    const msg = document.getElementById("msg");
-
-    if(username === "admin" && password === "123456"){
-
-        msg.style.color = "green";
-
-        msg.innerText = "登录成功";
-
-    }else{
-
-        msg.style.color = "red";
-
-        msg.innerText = "用户名或密码错误";
-
+const carList = [
+    {
+        carNumber:"A12345",
+        time:"10:00"
+    },
+    {
+        carNumber:"B88888",
+        time:"11:00"
     }
+];
 
+const tableBody = document.getElementById("carTableBody");
+
+function renderTable(){
+
+    tableBody.innerHTML = "";
+
+    carList.forEach((car, index) => {
+
+        tableBody.innerHTML += `
+        <tr>
+            <td>${car.carNumber}</td>
+            <td>${car.time}</td>
+            <td>
+                <button class="delete-btn" onclick="deleteCar(${index})">
+                    删除
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+}
+
+renderTable();
+
+function deleteCar(index)
+{
+    carList.splice(index, 1);
+
+    renderTable();
+}
+
+document.getElementById("addBtn").onclick = function(){
+
+    const carNumber = prompt("请输入车牌号");
+
+    const time = prompt("请输入进入时间");
+
+    if(carNumber && time){
+
+        carList.push({
+            carNumber,
+            time
+        });
+
+        renderTable();
+    }
 }
