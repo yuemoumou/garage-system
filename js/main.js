@@ -1,51 +1,10 @@
-const carList = JSON.parse(localStorage.getItem("carList")) || [
-    {
-        id:1,
-        carNumber:"A12345",
-        time:"10:00"
-    },
-    {
-        id:2,
-        carNumber:"B88888",
-        time:"11:00"
-    }
-];
-
-const tableBody = document.getElementById("carTableBody");
-
-function renderTable(data = carList){
-
-    tableBody.innerHTML = "";
-
-    data.forEach((car) => {
-
-        tableBody.innerHTML += `
-        <tr>
-            <td>${car.carNumber}</td>
-            <td>${car.time}</td>
-            <td>
-                <button class="delete-btn" onclick="deleteCar(${car.id})">
-                    删除
-                </button>
-            </td>
-        </tr>
-        `;
-    });
-}
-
-function saveDate(){
-    localStorage.setItem("carList", JSON.stringify(carList));
-}
-
-renderTable();
-
 function deleteCar(id){
 
     const index = carList.findIndex(car => car.id === id);
 
     carList.splice(index, 1);
 
-    saveDate();
+    saveData();
     renderTable();
 }
 
@@ -101,7 +60,7 @@ confirmBtn.onclick = function(){
             time
         });
 
-        saveDate();
+        saveData();
         renderTable();
 
         modal.style.display = "none";
@@ -111,3 +70,5 @@ confirmBtn.onclick = function(){
         document.getElementById("timeInput").value = "";
     }
 }
+
+renderTable();
