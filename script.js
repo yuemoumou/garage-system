@@ -1,4 +1,4 @@
-const carList = [
+const carList = JSON.parse(localStorage.getItem("carList")) || [
     {
         id:1,
         carNumber:"A12345",
@@ -33,6 +33,10 @@ function renderTable(data = carList){
     });
 }
 
+function saveDate(){
+    localStorage.setItem("carList", JSON.stringify(carList));
+}
+
 renderTable();
 
 function deleteCar(id){
@@ -41,24 +45,8 @@ function deleteCar(id){
 
     carList.splice(index, 1);
 
+    saveDate();
     renderTable();
-}
-
-document.getElementById("addBtn").onclick = function(){
-
-    const carNumber = prompt("请输入车牌号");
-
-    const time = prompt("请输入进入时间");
-
-    if(carNumber && time){
-
-        carList.push({
-            carNumber,
-            time
-        });
-
-        renderTable();
-    }
 }
 
 document.getElementById("searchBtn").onclick = function(){
@@ -72,4 +60,54 @@ document.getElementById("searchBtn").onclick = function(){
     });
 
     renderTable(result);
+}
+
+const modal = document.getElementById("modal");
+
+const addBtn = document.getElementById("addBtn");
+
+const confirmBtn = document.getElementById("confirmBtn");
+
+const cancelBtn = document.getElementById("cancelBtn");
+
+/* 打开弹窗 */
+addBtn.onclick = function(){
+
+    modal.style.display = "flex";
+}
+
+/* 取消按钮 */
+cancelBtn.onclick = function(){
+
+    modal.style.display = "none";
+
+    document.getElementById("carNumberInput").value = "";
+
+    document.getElementById("timeInput").value = "";
+}
+
+/* 确认按钮 */
+confirmBtn.onclick = function(){
+
+    const carNumber = document.getElementById("carNumberInput").value;
+
+    const time = document.getElementById("timeInput").value;
+
+    if(carNumber && time){
+
+        carList.push({
+            id: Date.now(),
+            carNumber,
+            time
+        });
+
+        saveDate();
+        renderTable();
+
+        modal.style.display = "none";
+
+        document.getElementById("carNumberInput").value = "";
+
+        document.getElementById("timeInput").value = "";
+    }
 }

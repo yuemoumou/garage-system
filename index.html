@@ -27,9 +27,6 @@
 
          <!-- 右侧内容 -->
           <div class="main">
-            <!-- <h1>欢迎使用车辆管理系统</h1>
-
-            <p>请选择左侧功能菜单</p> -->
 
             <button id = "addBtn">添加车辆</button>
 
@@ -51,6 +48,23 @@
                 </tbody>
             </table>
           </div>
+
+        <!-- 弹窗 -->
+         <div id = "modal" class="modal">
+                <div class="modal-content">
+                    <h2>添加车辆</h2>
+
+                    <input type="text" id = "carNumberInput" placeholder="请输入车牌号">
+
+                    <input type="text" id = "timeInput" placeholder="请输入进入时间">
+
+                    <div class="modal-buttons">
+                        <button id = "confirmBtn">确认</button>
+
+                        <button id = "cancelBtn" class = "delete-btn">取消</button>
+                    </div>
+                </div>
+         </div>
     </div>
 
     <script src="script.js"></script>
