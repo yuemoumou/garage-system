@@ -1,71 +1,118 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>车库管理系统</title>
 
     <link rel="stylesheet" href="./css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
 </head>
+
 <body>
 
     <div class="container">
+
         <!-- 左侧菜单 -->
-         <div class="sidebar">
+        <div class="sidebar">
 
             <h2>车库系统</h2>
 
             <ul>
-                <li>首页</li>
-                <li>车辆管理</li>
-                <li>收费记录</li>
-                <li>用户管理</li>
-                <li>系统设置</li>
+
+                <li class="menu-item" id="menu-dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>首页</span>
+                </li>
+
+                <li class="menu-item" id="menu-car">
+                        <i class="fa-solid fa-car"></i>
+                        <span>车辆管理</span>
+                </li>
+
+                <li class="menu-item" id="menu-charge">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <span>收费记录</span>
+                </li>
+
+                <li class="menu-item" id="menu-user">
+                    <i class="fa-solid fa-user"></i>
+                    <span>用户管理</span>
+                </li>
+
             </ul>
 
-         </div>
+        </div>
 
-         <!-- 右侧内容 -->
-          <div class="main">
+        <!-- 右侧内容 -->
+        <div class="main">
 
-            <button id = "addBtn">添加车辆</button>
+            <div class="topbar">
 
-            <input type="text" id = "searchInput" placeholder = "请输入车牌号">
+                <h2>车辆管理系统后台</h2>
 
-            <button id = "searchBtn">查询</button>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>车牌号</th>
-                        <th>进入时间</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-
-                <tbody id = "carTableBody">
-
-                </tbody>
-            </table>
-          </div>
-
-        <!-- 弹窗 -->
-         <div id = "modal" class="modal">
-                <div class="modal-content">
-                    <h2>添加车辆</h2>
-
-                    <input type="text" id = "carNumberInput" placeholder="请输入车牌号">
-
-                    <input type="text" id = "timeInput" placeholder="请输入进入时间">
-
-                    <div class="modal-buttons">
-                        <button id = "confirmBtn">确认</button>
-
-                        <button id = "cancelBtn" class = "delete-btn">取消</button>
-                    </div>
+                <div class="user-info">
+                    Admin
                 </div>
-         </div>
+
+                <button id="themeBtn">
+                    深色模式
+                </button>
+
+            </div>
+
+            <div id="content"></div>
+
+        </div>
+
     </div>
+
+    <!-- 弹窗 -->
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <h2>添加车辆</h2>
+
+            <input 
+                type="text" 
+                id="carNumberInput" 
+                placeholder="请输入车牌号"
+            >
+
+            <div class="modal-buttons">
+
+                <button id="confirmBtn">确认</button>
+
+                <button 
+                    id="cancelBtn" 
+                    class="delete-btn"
+                >
+                    取消
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="loading">
+
+        Loading...
+
+    </div>
+
+    <div id="toast"></div>
 
     <script src="./js/data.js"></script>
 
@@ -73,7 +120,10 @@
 
     <script src="./js/render.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
     <script src="./js/main.js"></script>
 
 </body>
+
 </html>

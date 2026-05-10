@@ -2,11 +2,14 @@ const carList = JSON.parse(localStorage.getItem("carList")) || [
     {
         id:1,
         carNumber:"A12345",
-        time:"10:00"
+
+
+        enterTime :Date.now(),
+
+        exitTime:null,
+
+        fee:0,
+
+        status:"停车中"
     },
-    {
-        id:2,
-        carNumber:"B88888",
-        time:"11:00"
-    }
 ];
